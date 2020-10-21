@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime pizza app</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" 
+        crossorigin="anonymous">    
+    <link rel="stylesheet" href="/css/app.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <header >
+        <!-- Fixed navbar -->
+       <nav class="navbar navbar-expand-lg navbar-light bg-yellow pt-2 pb-2" style="background-color:#fff222">
+          <a class="navbar-brand" href="/">
+            <img src="/img/logo1.jpeg" width="150" height="30" alt="">
+          </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services Offered
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Car Wash</a>
+                <a class="dropdown-item" href="#">Attractive Packages</a>
+              </div>
+            </li>
+            <% if(user) { %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/admin/orders" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  My Account
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/admin/orders">Profile</a>
+                <a class="dropdown-item" href="/admin/orders">My Order</a>
+                <a class="dropdown-item" href="/admin/orders">Track Order</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Checkout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                
+              <form id="logout" action="/logout" method="POST">
+                  <a class="nav-link" onclick="document.getElementById('logout').submit()" href="#">Logout</a>
+              </form>
+            </li>  
+            <% } else { %>
+              <li class="nav-item">
+                  <a class="nav-link" href="/register">Register</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/login">Login</a>
+                </li>
+            <% } %>
+              <li class="nav-item">
+                  
+                  <a href="/cart" class="inline-block px-4 py-2 rounded-full flex items-center">
+                      <span id="cartCounter"
+                          class="text-white font-bold pr-2"><%= session.cart ? session.cart.totalQty : '' %></span>
+                      <img src="/img/cart.png" alt="">
+                  </a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <%- body %>
+    <footer></footer>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>
