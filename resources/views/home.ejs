@@ -1,0 +1,139 @@
+<div class="container-fluid pl-0 pr-0">
+    <div class="embed-responsive embed-responsive-16by9 rounded">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LXb3EKWsInQ?rel=0&autoplay=1&mute=1&loop=1" allowfullscreen></iframe>
+    </div>
+</div>
+<section class="menu container mx-auto py-8">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h1 class="text-xl font-bold mb-8">Select your car category</h1>
+        </div>
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-4 col-sm-12">
+          <div class="btn-group ml-0" role="group" aria-label="Basic example">
+            <button type="button" class="btn" id="showall" target="1" style="color:#fff222">Small</button>
+            <button type="button" class="btn" target="2" style="color:#fff222">Medium</button>
+            <button type="button" class="btn" target="3" style="color:#fff222">Large</button>
+            <button type="button" class="btn" target="4" style="color:#fff222">Premium</button>
+          </div>
+        </div>  
+      </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16 py-2 sm-12 target" id="div1">
+      <% pizzas.forEach(function(pizza) { %>
+        
+      <div class="w-full md:w-64">
+          <img class="h-40 mb-4 mx-auto" src="/img/<%= pizza.image %>" alt="">
+          <div class="text-center">
+              <h2 class="mb-4 text-lg"><%= pizza.name %></h2>
+              <span class="size py-1 px-4 rounded-full uppercase text-xs">Small ₹<%= pizza.price %></span>
+              <div class="flex items-center justify-around mt-6">
+                  <button class="know-more  rounded-full flex items-center font-bold"
+                   
+                    data-toggle="modal" data-target=".know-more-modal-lg">
+                    <span class="mt-1 mb-1 ml-2 mr-2">Know More</span>
+                  </button>
+                  <div class="modal fade kickflip-modal-lg know-more-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg ">
+                        <div class="modal-content">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://youtube.com/embed/tP1OoaZxP4U" allowfullscreen></iframe>
+                            </div>
+                             
+                                <div><%=pizza.name %></div>
+                                <%console.log(pizza.name) %>
+                        </div>
+                    </div>
+                    </div>  
+                  <button data-pizza="<%= JSON.stringify(pizza) %>"
+                      class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                      <span>+</span>
+                      <span class="ml-4">Add</span>
+                  </button>
+              </div>
+          </div>
+      </div>
+      <% }) %>
+
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16 target" id="div2" style="display:none;">
+    <% pizzas.forEach(function(pizza) { %>
+    <div class="w-full md:w-64">
+        <img class="h-40 mb-4 mx-auto" src="/img/<%= pizza.image %>" alt="">
+        <div class="text-center">
+            <h2 class="mb-4 text-lg"><%= pizza.name %></h2>
+            <span class="size py-1 px-4 rounded-full uppercase text-xs">Medium ₹<%= pizza.price %></span>
+            <div class="flex items-center justify-around mt-6">
+                <button class="add-to-cart  rounded-full flex items-center font-bold">
+                    <span class="mt-1 mb-1 ml-2 mr-2">Know More</span>
+                  </button>
+                <button data-pizza="<%= JSON.stringify(pizza) %>" 
+                    class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                    <span>+</span>
+                    <span class="ml-4">Add</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16 target" id="div3" style="display:none;">
+    <% pizzas.forEach(function(pizza) { %>
+    <div class="w-full md:w-64">
+        <img class="h-40 mb-4 mx-auto" src="/img/<%= pizza.image %>" alt="">
+        <div class="text-center">
+            <h2 class="mb-4 text-lg"><%= pizza.name %></h2>
+            <span class="size py-1 px-4 rounded-full uppercase text-xs">Large ₹<%= pizza.price %></span>
+            <div class="flex items-center justify-around mt-6">
+                <button class="add-to-cart  rounded-full flex items-center font-bold">
+                    <span class="mt-1 mb-1 ml-2 mr-2">Know More</span>
+                </button>
+                <button data-pizza="<%= JSON.stringify(pizza) %>"
+                    class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                    <span>+</span>
+                    <span class="ml-4">Add</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16 target" id="div4" style="display:none;">
+    <% pizzas.forEach(function(pizza) { %>
+    <div class="w-full md:w-64">
+        <img class="h-40 mb-4 mx-auto" src="/img/<%= pizza.image %>" alt="">
+        <div class="text-center">
+            <h2 class="mb-4 text-lg"><%= pizza.name %></h2>
+            <span class="size py-1 px-4 rounded-full uppercase text-xs">Premium ₹<%= pizza.price %></span>
+            <div class="flex items-center justify-around mt-6">
+                <button class="add-to-cart  rounded-full flex items-center font-bold">
+                    <span class="mt-1 mb-1 ml-2 mr-2">Know More</span>
+                </button>
+                <button data-pizza="<%= JSON.stringify(pizza) %>"
+                    class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                    <span>+</span>
+                    <span class="ml-4">Add</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+
+  </div>
+
+  
+</div>
+
+</section>
+
+<script type="text/javascript">
+  
+    
+  jQuery(function(){
+      jQuery('.btn').click(function(){
+      jQuery('.target').hide();
+      jQuery('#div' + $(this).attr('target')).show();
+    });  
+  });
+</script>
